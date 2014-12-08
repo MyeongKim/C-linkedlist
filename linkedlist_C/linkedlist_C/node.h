@@ -10,10 +10,10 @@ typedef struct node
 NODE*	newNode	= NULL;
 NODE*	pHEAD	= NULL;
 NODE*	pDELETE	= NULL;
+NODE*	pSEARCH	= NULL;
 
 void addNode(int _val)
 {
-	
 	newNode = (NODE*)malloc(sizeof(NODE));
 	newNode->val = _val;
 	
@@ -21,64 +21,52 @@ void addNode(int _val)
 	else { newNode->next = pHEAD; }
 
 	pHEAD = newNode;
-	
 }
-
 
 void printNode()
 {
-	NODE* searchNODE = pHEAD;
-	while (searchNODE != NULL)
+	pSEARCH = pHEAD;
+	while (pSEARCH != NULL)
 	{
-		printf("%d\n", searchNODE->val);
-		searchNODE = searchNODE->next;
+		printf("%d\n", pSEARCH->val);
+		pSEARCH = pSEARCH->next;
 	}
 }
 
 void deleteNode(int _val)
 {
-	NODE* searchNODE = pHEAD;
-	while (searchNODE != NULL)
+	pSEARCH = pHEAD;
+	while (pSEARCH != NULL)
 	{
-		if (searchNODE->val == _val)
+		if (pSEARCH->val == _val)
 		{
-			pHEAD->next = searchNODE->next;
-			searchNODE->next = NULL;
-			pDELETE = searchNODE;
+			pHEAD->next = pSEARCH->next;
+			pSEARCH->next = NULL;
+			pDELETE = pSEARCH;
 
 			break;
 		}
-
-		pHEAD = searchNODE;
-		searchNODE = searchNODE->next;
+		pHEAD = pSEARCH;
+		pSEARCH = pSEARCH->next;
 	}
 
-	if (pDELETE == NULL)
-	{
-		printf("no search value!!!\n");
-	}
-	else
-	{
-		free(pDELETE);
-	}
+	if (pDELETE == NULL) { printf("no search value!!!\n"); }
+	else { free(pDELETE); }
 }
 
 void modifyNode(int _ori, int _val)
 {
-	NODE* searchNODE = pHEAD;
-	while (searchNODE != NULL)
+	pSEARCH = pHEAD;
+	while (pSEARCH != NULL)
 	{
-		if (searchNODE->val == _ori)
+		if (pSEARCH->val == _ori)
 		{
-			searchNODE->val = _val;
-			searchNODE = NULL;
+			pSEARCH->val = _val;
+			pSEARCH = NULL;
 			break;
 		}
-		searchNODE = searchNODE->next;
+		pSEARCH = pSEARCH->next;
 	}
 
-	if (searchNODE != NULL)
-	{
-		printf("no search value!!!\n");
-	}
+	if (pSEARCH != NULL) { printf("no search value!!!\n"); }
 }
