@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct node
 {
@@ -6,24 +7,30 @@ typedef struct node
 	struct node* node;
 } NODE;
 
-NODE*	newNode;
-NODE*	pHEAD;
-
-/*
-* ADD, PRINT, DELETE, MODIFY
-*/
+NODE*	newNode	= NULL;
+NODE*	pHEAD	= NULL;
 
 void addNode(int _val)
 {
+	
 	newNode = (NODE*)malloc(sizeof(NODE));
 	newNode->val = _val;
-	newNode->node = NULL;
+	
+	if (pHEAD == NULL) { newNode->node = NULL; }
+	else { newNode->node = pHEAD; }
+
 	pHEAD = newNode;
+	
 }
+
 
 void printNode()
 {
-	printf("%d\n", pHEAD->val);
+	while (pHEAD != NULL)
+	{
+		printf("%d\n", pHEAD->val);
+		pHEAD = pHEAD->node;
+	}
 }
 
 void deleteNode()
