@@ -1,4 +1,3 @@
 C-linkedlist
 ============
-
-linked list made with C
+Simple Linked List in C
