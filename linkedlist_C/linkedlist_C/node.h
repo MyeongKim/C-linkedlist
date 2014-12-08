@@ -63,7 +63,22 @@ void deleteNode(int _val)
 	}
 }
 
-void modifyNode()
+void modifyNode(int _ori, int _val)
 {
+	NODE* searchNODE = pHEAD;
+	while (searchNODE != NULL)
+	{
+		if (searchNODE->val == _ori)
+		{
+			searchNODE->val = _val;
+			searchNODE = NULL;
+			break;
+		}
+		searchNODE = searchNODE->next;
+	}
 
+	if (searchNODE != NULL)
+	{
+		printf("no search value!!!\n");
+	}
 }

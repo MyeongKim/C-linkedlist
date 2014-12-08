@@ -16,6 +16,10 @@ int main()
 
 	addNode(4);
 	printNode();
+	printf("\n");
+
+	modifyNode(3, 33);
+	printNode();
 
 	return 0;
 }
