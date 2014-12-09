@@ -20,6 +20,12 @@ int main()
 
 	modifyNode(3, 33);
 	printNode();
+	printf("\n");
+
+	deleteNode(1);
+	deleteNode(33);
+	deleteNode(4);
+	printNode();
 
 	return 0;
 }

@@ -35,19 +35,27 @@ void printNode()
 
 void deleteNode(int _val)
 {
+	pDELETE = pHEAD;
 	pSEARCH = pHEAD;
-	while (pSEARCH != NULL)
+	while (pDELETE != NULL)
 	{
-		if (pSEARCH->val == _val)
+		if (pDELETE->val == _val)
 		{
-			pHEAD->next = pSEARCH->next;
-			pSEARCH->next = NULL;
-			pDELETE = pSEARCH;
-
+			if (pDELETE == pHEAD)
+			{
+				pSEARCH = pDELETE->next;
+				pHEAD = pSEARCH;
+			}
+			else 
+			{
+				pSEARCH->next = pDELETE->next;
+			}
+			
+			pDELETE->next = NULL;
 			break;
 		}
-		pHEAD = pSEARCH;
-		pSEARCH = pSEARCH->next;
+		pSEARCH = pDELETE;
+		pDELETE = pDELETE->next;
 	}
 
 	if (pDELETE == NULL) { printf("no search value!!!\n"); }
